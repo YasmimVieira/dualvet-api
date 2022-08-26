@@ -2,7 +2,7 @@
 const { Router } = require('express')
 
 const UserController = require('../controllers/UserController')
-const SessionController = require('../controllers/Login')
+const SessionController = require('../controllers/LoginController')
 const ProductController = require('../controllers/ProductController')
 const CartController = require('../controllers/CartController')
 

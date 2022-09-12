@@ -8,3 +8,7 @@ const authenticationSchema = new mongoose.Schema(
         productPrice: { type: String },
     }
 )
+
+const authentication = mongoose.model('authentication', authenticationSchema);
+
+export default authentication;

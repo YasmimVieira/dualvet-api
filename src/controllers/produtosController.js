@@ -1,8 +1,8 @@
-import product from '../models/Product.js';
+import products from '../models/Product.js';
 
 class ProductController {
     static getProducts = (req, res) => {
-        product.find((err, product) => {
+        products.find((err, product) => {
             res.status(200).json(product)
         })
     }
@@ -10,7 +10,7 @@ class ProductController {
     static getProductsById = (req, res) => {
         const id = req.params.id;
 
-        product.findById(id, (err, product) => {
+        products.findById(id, (err, product) => {
             if(err) {
                 res.status(400).send({message: `$Livro nao localizado, por favor verifique se as informacoes estao corretas`})
             } else {
@@ -20,7 +20,7 @@ class ProductController {
     }
 
     static createProduct = (req, res) => {
-        let product = new product(req.body);
+        let product = new products(req.body);
 
         product.save((err) => {
             if(err) {
@@ -34,7 +34,7 @@ class ProductController {
     static updateProduct = (req, res) => {
         const id = req.params.id;
 
-        product.findByIdAndUpdate(id, { $set: req.body }, (err) => {
+        products.findByIdAndUpdate(id, { $set: req.body }, (err) => {
             if(!err) {
                 res.status(200).send({ message: "Produto atualizado com sucesso" })
             } else {
@@ -46,7 +46,7 @@ class ProductController {
     static deleteProduct = (req, res) => {
         const id = req.params.id;
 
-        product.findByIdAndDelete(id, (err) => {
+        products.findByIdAndDelete(id, (err) => {
             if(!err) {
                 res.status(200).send({ message: 'Produto removido com sucesso' })
             } else {

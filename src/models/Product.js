@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const authenticationSchema = new mongoose.Schema(
+const productSchema = new mongoose.Schema(
     {
         id: { type: String },
         productName: { type: String },
@@ -9,6 +9,6 @@ const authenticationSchema = new mongoose.Schema(
     }
 )
 
-const authentication = mongoose.model('authentication', authenticationSchema);
+const product = mongoose.model('product', productSchema);
 
-export default authentication;
+export default product;

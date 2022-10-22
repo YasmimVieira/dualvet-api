@@ -12,7 +12,7 @@ class ProductController {
 
         products.findById(id, (err, product) => {
             if(err) {
-                res.status(400).send({message: `$Livro nao localizado, por favor verifique se as informacoes estao corretas`})
+                res.status(400).send({message: `Livro nao localizado, por favor verifique se as informacoes estao corretas`})
             } else {
                 res.status(200).send(product);
             }
@@ -44,7 +44,7 @@ class ProductController {
     }
 
     static deleteProduct = (req, res) => {
-        const id = req.params.id;
+        const id = 
 
         products.findByIdAndDelete(id, (err) => {
             if(!err) {

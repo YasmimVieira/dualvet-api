@@ -1,6 +1,5 @@
 import express from "express";
 import * as authController from '../controllers/authentication/dashboardController.js';
-import {authLocal} from '../services/authService.js';
 
 const router = express.Router();
 

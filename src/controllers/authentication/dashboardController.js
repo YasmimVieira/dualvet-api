@@ -10,6 +10,10 @@ export async function signUp(req, res) {
 }
 
 export function login(req, res, next) {
-  res.status(200).json(req.user);
-  return next();
+  try {
+    res.status(200).json(req.user);
+    return next();
+  } catch (e) {
+    return res.status(500).json(e);
+  }
 }

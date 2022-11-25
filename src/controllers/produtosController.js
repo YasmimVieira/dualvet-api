@@ -44,7 +44,7 @@ class ProductController {
     }
 
     static deleteProduct = (req, res) => {
-        const id = 
+        const id = req.params.id;
 
         products.findByIdAndDelete(id, (err) => {
             if(!err) {

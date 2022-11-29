@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
       message: '{VALUE} is not a valid email!',
     },
   },
-  username: {
+  userName: {
     type: String,
     required: [true, 'UserName is required!'],
     trim: true,

@@ -9,9 +9,10 @@ export async function signUp(req, res) {
   }
 }
 
-export function login(req, res, next) {
+export async function login(req, res, next) {
   try {
-    res.status(200).json(req.user);
+    const user = await User(req.body)
+    res.status(200).json(user);
     return next();
   } catch (e) {
     return res.status(500).json(e);

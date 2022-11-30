@@ -1,5 +1,6 @@
 import products from '../models/Product.js';
-
+import multer from 'multer';
+import fs from 'file-system';
 class ProductController {
     static getProducts = (req, res) => {
         products.find((err, product) => {
@@ -17,6 +18,8 @@ class ProductController {
                 res.status(200).send(product);
             }
         })
+
+        products.collection('productCollection');
     }
 
     static createProduct = (req, res) => {
@@ -53,6 +56,27 @@ class ProductController {
                 res.status(500).send({ message: err.message })
             }
         })
+    }
+
+    static uploadImage = (req, res, next) => {
+        const setStorage = multer.diskStorage({
+            destination: function(req, res, cb) {
+                cb(null, 'uploads')
+            },
+            filename: function(req, file, cb) {
+                cb(null, `${file.fieldname}-${Date.now()}`)
+            }
+        })
+        const upload = multer({ storage: setStorage });
+
+        upload.single('myImage')
+
+        const img = fs.readFileSync(req.file.patch);
+        const encodeImg = img.toString('base64');
+
+        const finalImg = { contentType: req.file.mimetype, image: Buffer.from(encodeImg, 'base64') };
+
+        products.collection('productCollection').insertOne(finalImg);
     }
 }
 
